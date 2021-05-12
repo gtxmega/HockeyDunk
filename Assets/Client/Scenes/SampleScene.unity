@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0d8fc1ef781344c851dadbee49ea47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraOffset: {x: 7.3, y: 4.81, z: -1.11}
+  m_CameraOffset: {x: 4.31, y: 3.58, z: -1.99}
   m_CameraSmooth: 1
   m_TargetFollow: {fileID: 543450652122573629}
 --- !u!1 &1025990899
@@ -1501,7 +1501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4987023208337516869, guid: 21401ff474c0bbc45b1fe74e73fe83d4, type: 3}
       propertyPath: m_Force
-      value: 950
+      value: 1050
       objectReference: {fileID: 0}
     - target: {fileID: 4987023208337516869, guid: 21401ff474c0bbc45b1fe74e73fe83d4, type: 3}
       propertyPath: m_ForceType

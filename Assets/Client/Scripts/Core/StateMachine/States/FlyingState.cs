@@ -24,16 +24,9 @@ namespace GameCore.StateMachines
         {
             base.HandleInput();
 
-            if(Input.touchCount > 0)
+            if(Input.GetMouseButton(0))
             {
-                var currentTouch = Input.GetTouch(0);
-
-                switch(currentTouch.phase)
-                {
-                    case TouchPhase.Stationary:
-                        m_MovementBehevior.AddTorque(Vector3.right * 3.5f);
-                    break;
-                }
+                m_MovementBehevior.AddTorque(Vector3.right * 3.5f);
             }
         }
 
