@@ -3,9 +3,17 @@ using UnityEngine;
 
 namespace GameCore.Triggers
 {
+
     public class ForceTrigger : MonoBehaviour
     {
+        private enum ForceType
+        {
+            FORCE,
+            IMPULSE
+        }
+
         [SerializeField] private Transform m_PintDirectionTransform;
+        [SerializeField] private ForceType m_ForceType;
         [SerializeField] private float m_Force;
 
         private Vector3 forceVector;
@@ -22,7 +30,15 @@ namespace GameCore.Triggers
 
             if(_movementBehavior != null)
             {
-                _movementBehavior.ApplyImpulse(forceVector);
+                switch(m_ForceType)
+                {
+                    case ForceType.FORCE:
+                        _movementBehavior.Movement(forceVector);
+                    break;
+                    case ForceType.IMPULSE:
+                        _movementBehavior.ApplyImpulse(forceVector);
+                    break;
+                }
             }
         }
 

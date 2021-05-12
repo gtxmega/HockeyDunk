@@ -16,6 +16,7 @@ namespace GameCore.StateMachines
             base.Enter();
 
             Jump();
+            m_AnimatorBehevior.ResetAllTriggers();
             m_AnimatorBehevior.SetAnimationTrigger(jumpTriggerID);
             m_Character.m_StateMachine.ChangeState(m_Character.m_FlyingState);
             

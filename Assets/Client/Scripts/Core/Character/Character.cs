@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 using GameCore.StateMachines;
 
@@ -8,16 +9,26 @@ namespace GameCore
     [RequireComponent(typeof(Rigidbody), typeof(Animator), typeof(CenterOfMassChanger))]
     public class Character : MonoBehaviour, IMovementBehavior, IAnimatorBehavior
     {
+        #region Events
+
+        [HideInInspector] public UnityEvent EventDeath = new UnityEvent();
+
+        #endregion
+
         #region Variables
 
             [SerializeField] private CharacterData m_AttributesData;
             [SerializeField] private Transform m_GroundCheckTransform;
             [SerializeField] private LayerMask m_GroundLayer;
 
+            private Vector3 m_StartPosition;
+
 
         #endregion
 
         #region Properties
+
+            public bool m_isDeath {get; private set;}
 
             public CharacterData m_CharacterData {get {return m_AttributesData;} private set{ m_AttributesData = value;}}
 
@@ -27,6 +38,7 @@ namespace GameCore
             public SlipState m_SlipState {get; private set;}
             public JumpState m_JumpState {get; private set;}
             public FlyingState m_FlyingState {get; private set;}
+            public IdleState m_IdleState {get; private set;}
 
         #endregion
 
@@ -53,8 +65,11 @@ namespace GameCore
                 m_SlipState = new SlipState(this, this, this, m_StateMachine);
                 m_JumpState = new JumpState(this, this, this, m_StateMachine);
                 m_FlyingState = new FlyingState(this, this, this, m_StateMachine);
+                m_IdleState = new IdleState(this, this, this, m_StateMachine);
 
-                m_StateMachine.Initialize(m_StandingState);
+                m_StateMachine.Initialize(m_IdleState);
+
+                m_StartPosition = m_Transform.position;
             }
 
             private void Update()
@@ -96,9 +111,9 @@ namespace GameCore
                 }
 
                 public void ApplyImpulse(Vector3 impulse)
-                {      
-                    m_RigidBody.velocity = Vector3.zero;            
-                    m_RigidBody.AddForce(impulse, ForceMode.Impulse);
+                {
+                    ResetForceParams();
+                    m_RigidBody.AddForce(impulse, ForceMode.Acceleration);
                 }
 
                 public void ResetTorqueParams()
@@ -113,7 +128,7 @@ namespace GameCore
 
                 public bool CheckGround()
                 {
-                    return Physics.OverlapSphere(m_GroundCheckTransform.position, 0.2f, m_GroundLayer).Length > 0;
+                    return Physics.OverlapSphere(m_GroundCheckTransform.position, 0.5f, m_GroundLayer).Length > 0;
                 }
             #endregion
 
@@ -133,8 +148,36 @@ namespace GameCore
                     m_Animator.SetFloat(animID, value);
                 }
 
+                public void ResetAllTriggers()
+                {
+                    m_Animator.ResetTrigger("Run");
+                    m_Animator.ResetTrigger("Idle");
+                    m_Animator.ResetTrigger("Jump");
+                    m_Animator.ResetTrigger("Flying");
+                }
+
             #endregion
             
+            public void KillCharacter()
+            {
+                m_isDeath = true;
+                m_StateMachine.ChangeState(m_IdleState);
+
+                EventDeath.Invoke();
+            }
+
+            public void ReinitializeCharacter()
+            {
+                ResetAllTriggers();
+                ResetForceParams();
+                ResetTorqueParams();
+
+                m_Transform.position = m_StartPosition;
+                m_Transform.rotation = Quaternion.identity;
+
+                gameObject.SetActive(true);
+            }
+
 
         #endregion
     }
