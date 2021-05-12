@@ -15,6 +15,8 @@ namespace GameCore.StateMachines
         public override void Enter()
         {
             base.Enter();
+
+            m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
             
             m_AnimatorBehevior.ResetAllTriggers();
             m_AnimatorBehevior.SetAnimationTrigger(flyingTriggerID);
@@ -26,7 +28,13 @@ namespace GameCore.StateMachines
 
             if(Input.GetMouseButton(0))
             {
+                m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.GROUPING);
                 m_MovementBehevior.AddTorque(Vector3.right * 3.5f);
+            }
+
+            if(Input.GetMouseButtonUp(0))
+            {
+                m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
             }
         }
 

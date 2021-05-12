@@ -32,6 +32,8 @@ namespace GameCore
 
             public CharacterData m_CharacterData {get {return m_AttributesData;} private set{ m_AttributesData = value;}}
 
+            public CenterOfMassChanger m_CenterOfMassChanger {get; private set;}
+
             // State machine and all character state
             public StateMachine m_StateMachine {get; private set;}
             public StandingState m_StandingState {get; private set;}
@@ -58,6 +60,8 @@ namespace GameCore
                 m_Transform = GetComponent<Transform>();
                 m_RigidBody = GetComponent<Rigidbody>();
                 m_Animator = GetComponent<Animator>();
+
+                m_CenterOfMassChanger = GetComponent<CenterOfMassChanger>();
 
                 m_StateMachine = new StateMachine();
 
@@ -113,7 +117,7 @@ namespace GameCore
                 public void ApplyImpulse(Vector3 impulse)
                 {
                     ResetForceParams();
-                    m_RigidBody.AddForce(impulse, ForceMode.Acceleration);
+                    m_RigidBody.AddForce(impulse, ForceMode.VelocityChange);
                 }
 
                 public void ResetTorqueParams()

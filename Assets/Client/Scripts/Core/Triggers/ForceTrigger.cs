@@ -11,8 +11,7 @@ namespace GameCore.Triggers
             FORCE,
             IMPULSE
         }
-
-        [SerializeField] private Transform m_PintDirectionTransform;
+        
         [SerializeField] private ForceType m_ForceType;
         [SerializeField] private float m_Force;
 
@@ -20,7 +19,10 @@ namespace GameCore.Triggers
 
         private void Start() 
         {
-            forceVector = (m_PintDirectionTransform.position - transform.position).normalized;
+            forceVector = transform.forward;
+            forceVector.y += Mathf.Cos(120.0f);
+
+            forceVector = forceVector.normalized;
             forceVector *= m_Force;
         }
 
@@ -40,6 +42,8 @@ namespace GameCore.Triggers
                     break;
                 }
             }
+
+            gameObject.SetActive(false);
         }
 
 #region  Visuals for editor
@@ -53,8 +57,12 @@ namespace GameCore.Triggers
         {
             Gizmos.color = m_ColorRay;
 
-            if(m_PintDirectionTransform != null)
-                Gizmos.DrawLine(transform.position, m_PintDirectionTransform.position);
+            var direction = transform.forward;
+            direction.y += Mathf.Cos(120.0f);
+            direction = direction.normalized;
+            direction *= 10.0f;
+
+            Gizmos.DrawRay(transform.position, direction);
         }
 
     #endif

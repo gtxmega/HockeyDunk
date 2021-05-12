@@ -16,6 +16,8 @@ namespace GameCore.StateMachines
         public override void Enter()
         {
             base.Enter();
+
+            m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.DEFAULT);
             
             m_AnimatorBehevior.ResetAllTriggers();
             m_AnimatorBehevior.SetAnimationTrigger(slipTriggerID);
