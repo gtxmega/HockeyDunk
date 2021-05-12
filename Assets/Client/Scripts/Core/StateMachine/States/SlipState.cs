@@ -25,15 +25,9 @@ namespace GameCore.StateMachines
         {
             base.HandleInput();
 
-            if(Input.touchCount > 0)
+            if(Input.GetMouseButtonDown(0))
             {
-                var currentTouch = Input.GetTouch(0);
-
-                if(currentTouch.phase == TouchPhase.Ended)
-                {
-                    m_StateMachine.ChangeState(m_Character.m_JumpState);
-
-                }
+                m_StateMachine.ChangeState(m_Character.m_JumpState);
             }
         }
 
