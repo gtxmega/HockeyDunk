@@ -15,6 +15,7 @@ namespace GameCore.StateMachines
         {
             base.Enter();
             
+            m_AnimatorBehevior.ResetAllTriggers();
             m_AnimatorBehevior.SetAnimationTrigger(idleTriggerID);
         }
 

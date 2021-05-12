@@ -16,6 +16,7 @@ namespace GameCore.StateMachines
         {
             base.Enter();
             
+            m_AnimatorBehevior.ResetAllTriggers();
             m_AnimatorBehevior.SetAnimationTrigger(flyingTriggerID);
         }
 
@@ -30,7 +31,7 @@ namespace GameCore.StateMachines
                 switch(currentTouch.phase)
                 {
                     case TouchPhase.Stationary:
-                        m_MovementBehevior.AddTorque(Vector3.right * 3);
+                        m_MovementBehevior.AddTorque(Vector3.right * 3.5f);
                     break;
                 }
             }
@@ -46,6 +47,13 @@ namespace GameCore.StateMachines
             {
                 m_StateMachine.ChangeState(m_Character.m_SlipState);
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0.0f);
         }
 
 

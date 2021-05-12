@@ -6,5 +6,6 @@ namespace GameCore
         void SetAnimationTrigger(int triggerID);
         void SetAnimatorParamBool(int animID, bool state);
         void SetAnimatorParamFloat(int animID, float value);
+        void ResetAllTriggers();
     }
 }

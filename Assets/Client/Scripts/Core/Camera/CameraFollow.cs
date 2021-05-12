@@ -28,9 +28,7 @@ namespace GameCore
 
         private void LateUpdate()
         {
-            var _deltaPosition = m_TargetFollow.position + m_CameraOffset;
-            m_Transform.position = Vector3.Lerp(m_Transform.position, _deltaPosition, m_CameraSmooth);
-
+            UpdateFollowPosition();
         }
 
 #endregion
@@ -40,6 +38,12 @@ namespace GameCore
     public void SetTargetFollow(Transform targetFollow)
     {
         m_TargetFollow = targetFollow;
+    }
+
+    public void UpdateFollowPosition()
+    {
+        var _deltaPosition = m_TargetFollow.position + m_CameraOffset;
+        m_Transform.position = Vector3.Lerp(m_Transform.position, _deltaPosition, m_CameraSmooth);
     }
 
 #endregion
