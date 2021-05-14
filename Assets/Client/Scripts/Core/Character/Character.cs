@@ -21,6 +21,9 @@ namespace GameCore
             [SerializeField] private Transform m_GroundCheckTransform;
             [SerializeField] private LayerMask m_GroundLayer;
 
+            [SerializeField] private GameObject m_RagdollCharacter;
+            private GameObject m_RagdollCharacterInstance;
+
             private Vector3 m_StartPosition;
 
 
@@ -29,6 +32,7 @@ namespace GameCore
         #region Properties
 
             public bool m_isDeath {get; private set;}
+            public bool m_isGrouping {get; private set;}
 
             public CharacterData m_CharacterData {get {return m_AttributesData;} private set{ m_AttributesData = value;}}
 
@@ -134,6 +138,12 @@ namespace GameCore
                 {
                     return Physics.OverlapSphere(m_GroundCheckTransform.position, 0.5f, m_GroundLayer).Length > 0;
                 }
+
+                public void SetGrouping(bool status)
+                {
+                    m_isGrouping = status;
+                }
+
             #endregion
 
             #region  Interface AnimatorBehavior
@@ -168,6 +178,9 @@ namespace GameCore
                 m_StateMachine.ChangeState(m_IdleState);
 
                 EventDeath.Invoke();
+
+                gameObject.SetActive(false);
+                m_RagdollCharacterInstance = Instantiate(m_RagdollCharacter, m_Transform.position, m_Transform.rotation);
             }
 
             public void ReinitializeCharacter()
@@ -179,9 +192,11 @@ namespace GameCore
                 m_Transform.position = m_StartPosition;
                 m_Transform.rotation = Quaternion.identity;
 
+                if(m_RagdollCharacterInstance != null)
+                    Destroy(m_RagdollCharacterInstance);
+
                 gameObject.SetActive(true);
             }
-
 
         #endregion
     }

@@ -6,14 +6,14 @@ namespace GameCore.Triggers
 
     public class ForceTrigger : MonoBehaviour
     {
-        private enum ForceType
+        private enum TRIGGER_TYPE
         {
             FORCE,
-            IMPULSE
+            TRAMPOLINE
         }
-        
-        [SerializeField] private ForceType m_ForceType;
+
         [SerializeField] private float m_Force;
+        [SerializeField] private TRIGGER_TYPE m_TriggerType;
 
         private Vector3 forceVector;
 
@@ -28,19 +28,30 @@ namespace GameCore.Triggers
 
         private void OnTriggerEnter(Collider otherCollider) 
         {
-            var _movementBehavior = otherCollider.GetComponentInParent<IMovementBehavior>();
+            var character = otherCollider.GetComponentInParent<Character>();
 
-            if(_movementBehavior != null)
+            if(character == null)
+                return;
+
+            switch(m_TriggerType)
             {
-                switch(m_ForceType)
-                {
-                    case ForceType.FORCE:
-                        _movementBehavior.Movement(forceVector);
-                    break;
-                    case ForceType.IMPULSE:
-                        _movementBehavior.ApplyImpulse(forceVector);
-                    break;
-                }
+                case TRIGGER_TYPE.FORCE:
+
+                    character.ApplyImpulse(forceVector);
+
+                break;
+                case TRIGGER_TYPE.TRAMPOLINE:
+
+                    if(character.m_isGrouping == false)
+                    {
+                        character.ApplyImpulse(forceVector);
+                        gameObject.SetActive(false);
+                    }else
+                    {
+                        character.KillCharacter();
+                    }
+                    
+                break;
             }
 
             gameObject.SetActive(false);

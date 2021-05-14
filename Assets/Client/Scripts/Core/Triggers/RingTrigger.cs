@@ -28,7 +28,10 @@ namespace GameCore.Triggers
         {
             var character = other.GetComponentInParent<Character>();
 
-            if(other.CompareTag("Ball") && character != null)
+            if(character == null)
+                return;
+
+            if(other.CompareTag("Ball") && character.m_isGrouping == false)
             {
 
                 Instantiate(m_PrefabSpawnBall, m_PointSpawnBall.position, Quaternion.identity);

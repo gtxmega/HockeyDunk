@@ -445,8 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd6fdcf765b344eaa68c848aaed4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceType: 1
   m_Force: 25
+  m_TriggerType: 1
   m_ColorRay: {r: 0.9528302, g: 0.17528482, b: 0.2720049, a: 1}
 --- !u!65 &303523911
 BoxCollider:
@@ -469,8 +469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303523909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9159035, z: 0.029255142}
-  m_LocalScale: {x: 0.22503771, y: 0.22503771, z: 0.22503771}
+  m_LocalPosition: {x: 0, y: -1.72, z: 0.029255142}
+  m_LocalScale: {x: 0.22503771, y: 5.49, z: 0.22503771}
   m_Children: []
   m_Father: {fileID: 105394359}
   m_RootOrder: 0
@@ -580,8 +580,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385595415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9159035, z: 0.029255142}
-  m_LocalScale: {x: 0.22503771, y: 0.22503771, z: 0.22503771}
+  m_LocalPosition: {x: 0, y: -3.16, z: 0.029255142}
+  m_LocalScale: {x: 0.22503771, y: 8.29, z: 0.22503771}
   m_Children: []
   m_Father: {fileID: 1697301264}
   m_RootOrder: 0
@@ -598,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd6fdcf765b344eaa68c848aaed4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceType: 1
   m_Force: 24
+  m_TriggerType: 1
   m_ColorRay: {r: 0.9528302, g: 0.17528482, b: 0.2720049, a: 1}
 --- !u!65 &385595418
 BoxCollider:
@@ -1359,8 +1359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd6fdcf765b344eaa68c848aaed4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceType: 1
   m_Force: 25
+  m_TriggerType: 0
   m_ColorRay: {r: 0.9528302, g: 0.17528482, b: 0.2720049, a: 1}
 --- !u!65 &1102577678
 BoxCollider:
@@ -1956,7 +1956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5943396, g: 0.26072443, b: 0.26072443, a: 1}
+  m_Color: {r: 1, g: 0.4764151, b: 0.5911081, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2634,8 +2634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd6fdcf765b344eaa68c848aaed4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceType: 1
   m_Force: 20
+  m_TriggerType: 0
   m_ColorRay: {r: 0.9528302, g: 0.17528482, b: 0.2720049, a: 1}
 --- !u!4 &4987023209305574627
 Transform:
@@ -2663,8 +2663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd6fdcf765b344eaa68c848aaed4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForceType: 1
   m_Force: 25
+  m_TriggerType: 0
   m_ColorRay: {r: 0.9528302, g: 0.17528482, b: 0.2720049, a: 1}
 --- !u!65 &4987023209305574630
 BoxCollider:
@@ -2776,6 +2776,10 @@ PrefabInstance:
       propertyPath: m_CenterOfMassGroupingTransform
       value: 
       objectReference: {fileID: 483209345}
+    - target: {fileID: 6607190825868422470, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+      propertyPath: m_RagdollCharacter
+      value: 
+      objectReference: {fileID: 1237378856538830347, guid: 76b75b3a665243643871e9350b0a4b0e, type: 3}
     - target: {fileID: 6607190825868422472, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
       propertyPath: m_Name
       value: SkateGirl

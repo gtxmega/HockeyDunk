@@ -30,11 +30,14 @@ namespace GameCore.StateMachines
             {
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.GROUPING);
                 m_MovementBehevior.AddTorque(Vector3.right * 3.5f);
+                
+                m_MovementBehevior.SetGrouping(true);
             }
 
             if(Input.GetMouseButtonUp(0))
             {
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
+                m_MovementBehevior.SetGrouping(false);
             }
         }
 

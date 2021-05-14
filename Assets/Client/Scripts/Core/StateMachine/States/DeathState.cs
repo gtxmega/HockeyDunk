@@ -24,16 +24,18 @@ namespace GameCore.StateMachines
         {
             base.PhysicsUpdate();
 
-            if(m_MovementBehevior.GetSqrMagnitudeVelocity() < 3.0f)
-            {
-                var startRay = m_Character.m_Transform.position - (m_Character.m_Transform.forward * 1);
-                startRay += m_Character.m_Transform.up;
-                
-                if(Physics.Raycast(startRay, m_Character.m_Transform.forward, 2.0f, m_CheckLayer))
-                {
-                    m_Character.KillCharacter();
-                }
-            }
+            var startRay = m_Character.m_Transform.position + m_Character.m_Transform.up;
+            
+            if(RayCheckDirection(startRay, m_Character.m_Transform.forward))
+                m_Character.KillCharacter();
+
+            if(RayCheckDirection(startRay, -m_Character.m_Transform.forward))
+                m_Character.KillCharacter();
+        }
+
+        private bool RayCheckDirection(Vector3 startPoint, Vector3 direction)
+        {
+            return Physics.Raycast(startPoint, direction, 0.5f, m_CheckLayer);
         }
     }
 

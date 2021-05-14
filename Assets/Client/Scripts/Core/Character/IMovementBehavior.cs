@@ -11,6 +11,6 @@ public interface IMovementBehavior
 
     void ResetTorqueParams();
     void ResetForceParams();
-
+    void SetGrouping(bool status);
     bool CheckGround();
 }
