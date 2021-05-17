@@ -14,6 +14,8 @@ namespace GameCore.Triggers
         [SerializeField] private Transform m_PointSpawnBall;
 
         private BindingRagdoll m_BindingRagDoll;
+        
+        private GameObject m_BallObject;
 
         private GameMode m_GameMode;
 
@@ -34,7 +36,7 @@ namespace GameCore.Triggers
             if(other.CompareTag("Ball") && character.m_isGrouping == false)
             {
 
-                Instantiate(m_PrefabSpawnBall, m_PointSpawnBall.position, Quaternion.identity);
+                m_BallObject = Instantiate(m_PrefabSpawnBall, m_PointSpawnBall.position, Quaternion.identity);
 
                 character.gameObject.SetActive(false);
                 
@@ -56,6 +58,7 @@ namespace GameCore.Triggers
             {
                 m_HingeJointForRagdoll.connectedBody = null;
                 
+                Destroy(m_BallObject);
                 Destroy(m_BindingRagDoll.gameObject);
             }
         }

@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using GameCore.VFX;
+
 
 namespace GameCore.Triggers
 {
@@ -14,6 +16,8 @@ namespace GameCore.Triggers
 
         [SerializeField] private float m_Force;
         [SerializeField] private TRIGGER_TYPE m_TriggerType;
+
+        [SerializeField] private ParticleSystem m_VFX_Boom;
 
         private Vector3 forceVector;
 
@@ -54,6 +58,11 @@ namespace GameCore.Triggers
                 break;
             }
 
+            if(m_VFX_Boom != null)
+                m_VFX_Boom.Play();
+
+            character.GetComponent<VFX_JumpTrail>().PlayVFXJump();
+            
             gameObject.SetActive(false);
         }
 

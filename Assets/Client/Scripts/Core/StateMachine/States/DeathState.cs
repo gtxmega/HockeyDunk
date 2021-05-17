@@ -35,7 +35,7 @@ namespace GameCore.StateMachines
 
         private bool RayCheckDirection(Vector3 startPoint, Vector3 direction)
         {
-            return Physics.Raycast(startPoint, direction, 0.5f, m_CheckLayer);
+            return Physics.Raycast(startPoint, direction, 0.6f, m_CheckLayer);
         }
     }
 

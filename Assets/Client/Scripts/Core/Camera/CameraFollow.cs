@@ -5,11 +5,15 @@ namespace GameCore
     public class CameraFollow : MonoBehaviour
     {
         [SerializeField] private Vector3 m_CameraOffset;
-        [SerializeField] private float m_CameraSmooth;
+        [SerializeField] private float m_CameraSmoothSpeed;
+        [SerializeField] private float m_CameraSlowSmoothSpeed;
 
         [Header("Target follow")]
         [SerializeField] private Transform m_TargetFollow;
 
+
+
+        private float m_CurrentSmoothSpeed;
         private Transform m_Transform;
 
 #region MonoBehavior methods
@@ -24,9 +28,11 @@ namespace GameCore
                 
                 gameObject.SetActive(false);
             }
+
+            m_CurrentSmoothSpeed = m_CameraSmoothSpeed;
         }
 
-        private void LateUpdate()
+        private void Update() 
         {
             UpdateFollowPosition();
         }
@@ -43,7 +49,17 @@ namespace GameCore
     public void UpdateFollowPosition()
     {
         var _deltaPosition = m_TargetFollow.position + m_CameraOffset;
-        m_Transform.position = Vector3.Lerp(m_Transform.position, _deltaPosition, m_CameraSmooth);
+        m_Transform.position = Vector3.Lerp(m_Transform.position, _deltaPosition, m_CurrentSmoothSpeed * Time.fixedDeltaTime);
+    }
+
+    public void EnableCameraSlow()
+    {
+        m_CurrentSmoothSpeed = m_CameraSlowSmoothSpeed;
+    }
+
+    public void DisableCameraSlow()
+    {
+        m_CurrentSmoothSpeed = m_CameraSmoothSpeed;
     }
 
 #endregion

@@ -21,9 +21,6 @@ namespace GameCore
             [SerializeField] private Transform m_GroundCheckTransform;
             [SerializeField] private LayerMask m_GroundLayer;
 
-            [SerializeField] private GameObject m_RagdollCharacter;
-            private GameObject m_RagdollCharacterInstance;
-
             private Vector3 m_StartPosition;
 
 
@@ -115,7 +112,7 @@ namespace GameCore
 
                 public void AddTorque(Vector3 torqueVector)
                 {
-                    m_RigidBody.AddTorque(torqueVector, ForceMode.Impulse);
+                    m_RigidBody.AddTorque(torqueVector, ForceMode.Acceleration);
                 }
 
                 public void ApplyImpulse(Vector3 impulse)
@@ -179,8 +176,8 @@ namespace GameCore
 
                 EventDeath.Invoke();
 
-                gameObject.SetActive(false);
-                m_RagdollCharacterInstance = Instantiate(m_RagdollCharacter, m_Transform.position, m_Transform.rotation);
+                m_Animator.enabled = false;
+
             }
 
             public void ReinitializeCharacter()
@@ -192,8 +189,8 @@ namespace GameCore
                 m_Transform.position = m_StartPosition;
                 m_Transform.rotation = Quaternion.identity;
 
-                if(m_RagdollCharacterInstance != null)
-                    Destroy(m_RagdollCharacterInstance);
+                m_Animator.enabled = true;
+                SetAnimationTrigger(Animator.StringToHash("Idle"));
 
                 gameObject.SetActive(true);
             }
