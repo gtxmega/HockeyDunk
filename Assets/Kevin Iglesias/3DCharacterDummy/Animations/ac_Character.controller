@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UnGrouping
-  m_Speed: -8
+  m_Speed: -15
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7072777483252989264}
@@ -251,7 +251,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grouping
-  m_Speed: 8
+  m_Speed: 15
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7322900049864849559}
