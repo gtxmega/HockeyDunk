@@ -32,7 +32,7 @@ namespace GameCore
             m_CurrentSmoothSpeed = m_CameraSmoothSpeed;
         }
 
-        private void Update() 
+        private void FixedUpdate()
         {
             UpdateFollowPosition();
         }
