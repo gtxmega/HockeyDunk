@@ -112,7 +112,7 @@ namespace GameCore
 
                 public void AddTorque(Vector3 torqueVector)
                 {
-                    m_RigidBody.AddTorque(torqueVector, ForceMode.Acceleration);
+                    m_RigidBody.AddTorque(torqueVector, ForceMode.VelocityChange);
                 }
 
                 public void ApplyImpulse(Vector3 impulse)

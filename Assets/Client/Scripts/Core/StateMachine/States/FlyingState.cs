@@ -46,13 +46,13 @@ namespace GameCore.StateMachines
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
                 m_MovementBehevior.SetGrouping(false);
             }
+
+            m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, m_MovementBehevior.GetSqrMagnitudeAngularVelocity());
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-
-            m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, m_MovementBehevior.GetSqrMagnitudeAngularVelocity());
 
             if(m_MovementBehevior.CheckGround())
             {

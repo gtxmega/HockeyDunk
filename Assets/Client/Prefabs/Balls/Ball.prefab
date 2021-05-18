@@ -53,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -90,7 +91,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971269468274736852}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 09a19d6689f78f047aae1b85e0be570e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
