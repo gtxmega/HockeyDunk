@@ -171,6 +171,9 @@ namespace GameCore
             
             public void KillCharacter()
             {
+                ResetForceParams();
+                ResetTorqueParams();
+
                 m_isDeath = true;
                 m_StateMachine.ChangeState(m_IdleState);
 

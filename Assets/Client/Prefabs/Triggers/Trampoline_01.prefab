@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 8186623644175915533}
   - component: {fileID: 5058493738987574696}
   - component: {fileID: 7050268706012963170}
+  - component: {fileID: 234393866}
   m_Layer: 0
   m_Name: Trampoline_01
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &234393866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851660660381778103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.264873, y: 0.8963933, z: 4.264873}
+  m_Center: {x: -0.00000023841858, y: 0.14, z: 0.3258142}
 --- !u!1001 &6530711443377583644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,7 +178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8961997653574948480, guid: f77974555236ec0498940d10a0dfdb6f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76699996
+      value: 0.777
       objectReference: {fileID: 0}
     - target: {fileID: 8961997653574948480, guid: f77974555236ec0498940d10a0dfdb6f, type: 3}
       propertyPath: m_LocalPosition.z
