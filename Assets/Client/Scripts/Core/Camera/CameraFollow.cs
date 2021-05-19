@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace GameCore
 {
+
+    [ExecuteInEditMode]
     public class CameraFollow : MonoBehaviour
     {
         [SerializeField] private Vector3 m_CameraOffset;
@@ -30,7 +32,25 @@ namespace GameCore
             }
 
             m_CurrentSmoothSpeed = m_CameraSmoothSpeed;
+
+#if UNITY_EDITOR
+            updateInEditor = false;
+#endif
+
         }
+
+#if UNITY_EDITOR
+
+        [Tooltip("Update camera position in editor mode")]
+        [Header("Update camera position")]
+        [SerializeField] private bool updateInEditor;
+
+        private void Update() 
+        {
+            if(updateInEditor)
+                UpdateFollowPosition();
+        }
+#endif
 
         private void FixedUpdate()
         {
