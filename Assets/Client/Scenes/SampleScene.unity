@@ -1653,7 +1653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.24888453, y: -0.4619148, z: 0.13682538, w: 0.8402202}
-  m_LocalPosition: {x: 4.08, y: 18.79, z: -9.75}
+  m_LocalPosition: {x: 4.1327686, y: 14.882001, z: -22.081999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1671,10 +1671,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0d8fc1ef781344c851dadbee49ea47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraOffset: {x: 4.31, y: 3.58, z: -2.3}
+  m_CameraOffset: {x: 4.02, y: 3.28, z: -2.3}
   m_CameraSmoothSpeed: 150
   m_CameraSlowSmoothSpeed: 13
   m_TargetFollow: {fileID: 483209345}
+  updateInEditor: 1
 --- !u!1 &1025990899
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,7 +3906,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620739590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.4, y: -0.1, z: -30.2}
+  m_LocalPosition: {x: -35.4, y: -0.1, z: -29.07}
   m_LocalScale: {x: 21.56567, y: 62.463093, z: 21.56567}
   m_Children: []
   m_Father: {fileID: 2129509798}
