@@ -38,8 +38,8 @@ namespace GameCore.Triggers
 
             for(int i = 0; i < m_Shards.Length; ++i)
             {
-                m_ShardsPositions[i] = m_Shards[i].position;
-                m_ShardsRotations[i] = m_Shards[i].rotation;
+                m_ShardsPositions[i] = m_Shards[i].transform.localPosition;
+                m_ShardsRotations[i] = m_Shards[i].transform.localRotation;
 
                 m_Shards[i].isKinematic = true;
                 m_Shards[i].gameObject.SetActive(false);
@@ -86,11 +86,13 @@ namespace GameCore.Triggers
             {
                 m_Shards[i].isKinematic = true;
 
-                m_Shards[i].position = m_ShardsPositions[i];
-                m_Shards[i].rotation = m_ShardsRotations[i];
+                m_Shards[i].transform.localPosition = m_ShardsPositions[i];
+                m_Shards[i].transform.localRotation = m_ShardsRotations[i];
                 
                 m_Shards[i].gameObject.SetActive(false);
             }
+
+            m_OriginalObjectTransform.gameObject.SetActive(true);
         }
 
         private void SubscribeToEvents()
@@ -98,6 +100,7 @@ namespace GameCore.Triggers
             if(m_GameMode != null)
             {
                 m_GameMode.EventLevelWon.AddListener(ApplyExplosion);
+                m_GameMode.EventRestartLevel.AddListener(ResetShards);
             }
         }
 
@@ -106,6 +109,7 @@ namespace GameCore.Triggers
             if(m_GameMode != null)
             {
                 m_GameMode.EventLevelWon.RemoveListener(ApplyExplosion);
+                m_GameMode.EventRestartLevel.RemoveListener(ResetShards);
             }
         }
 

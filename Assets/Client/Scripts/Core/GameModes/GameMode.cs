@@ -10,7 +10,7 @@ namespace GameCore
         #region Events
 
             [HideInInspector] public UnityEvent EventStartLevel = new UnityEvent();
-            [HideInInspector] public UnityEvent EventLevelWon = new UnityEvent();
+            public UnityEvent EventLevelWon = new UnityEvent();
             [HideInInspector] public UnityEvent EventLevelLose = new UnityEvent();
             [HideInInspector] public UnityEvent EventRestartLevel = new UnityEvent();
 
