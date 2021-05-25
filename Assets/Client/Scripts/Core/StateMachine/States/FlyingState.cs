@@ -29,6 +29,8 @@ namespace GameCore.StateMachines
             m_AnimatorBehevior.SetAnimationTrigger(flyingTriggerID);
         }
 
+        float timer;
+
         public override void HandleInput()
         {
             base.HandleInput();
@@ -37,12 +39,21 @@ namespace GameCore.StateMachines
             {
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.GROUPING);
                 m_MovementBehevior.AddTorque(Vector3.right * m_Character.m_CharacterData.TrunSpeed);
+
+                timer += Time.deltaTime;
+                var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
+
+                //Debug.Log(m_Character.GetAngularVelocity());
                 
+                
+
                 m_MovementBehevior.SetGrouping(true);
             }
 
             if(Input.GetMouseButtonUp(0))
             {
+                timer = 0.0f;
+
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
                 m_MovementBehevior.SetGrouping(false);
             }

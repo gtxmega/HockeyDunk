@@ -42,6 +42,7 @@ namespace GameCore
             public JumpState m_JumpState {get; private set;}
             public FlyingState m_FlyingState {get; private set;}
             public IdleState m_IdleState {get; private set;}
+            public DunkState m_DunkState {get; private set;}
 
         #endregion
 
@@ -71,6 +72,7 @@ namespace GameCore
                 m_JumpState = new JumpState(this, this, this, m_StateMachine);
                 m_FlyingState = new FlyingState(this, this, this, m_StateMachine);
                 m_IdleState = new IdleState(this, this, this, m_StateMachine);
+                m_DunkState = new DunkState(this, this, this, m_StateMachine);
 
                 m_StateMachine.Initialize(m_IdleState);
 
@@ -98,6 +100,11 @@ namespace GameCore
                 public float GetSqrMagnitudeAngularVelocity()
                 {
                     return m_RigidBody.angularVelocity.sqrMagnitude;
+                }
+
+                public float GetAngularVelocity()
+                {
+                    return m_RigidBody.angularVelocity.magnitude;
                 }
 
                 public float GetSqrMagnitudeVelocity()

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b96732d695eeb94f988f1cdcb78da57, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  turnSpeed: 12
+  turnSpeed: 2555
   jumpForce: 15
   slipeForce: 30
