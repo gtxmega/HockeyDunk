@@ -21,8 +21,12 @@ namespace GameCore
             [SerializeField] private Transform m_GroundCheckTransform;
             [SerializeField] private LayerMask m_GroundLayer;
 
-            private Vector3 m_StartPosition;
+            [Header("Ball")]
+            [SerializeField] private Transform m_SocketBall;
+            [SerializeField] private Transform m_BallInCharacter;
 
+            private Vector3 m_StartPosition;
+            private Vector3 m_BallStartPosition;
 
         #endregion
 
@@ -77,6 +81,7 @@ namespace GameCore
                 m_StateMachine.Initialize(m_IdleState);
 
                 m_StartPosition = m_Transform.position;
+                m_BallStartPosition = m_BallInCharacter.localPosition;
             }
 
             private void Update()
@@ -186,6 +191,10 @@ namespace GameCore
 
                 EventDeath.Invoke();
 
+
+                m_SocketBall.DetachChildren();
+                m_BallInCharacter.GetComponent<Rigidbody>().isKinematic = false;
+
                 m_Animator.enabled = false;
 
             }
@@ -201,6 +210,10 @@ namespace GameCore
 
                 m_Animator.enabled = true;
                 SetAnimationTrigger(Animator.StringToHash("Idle"));
+
+                m_BallInCharacter.SetParent(m_SocketBall.transform);
+                m_BallInCharacter.localPosition = m_BallStartPosition;
+                m_BallInCharacter.GetComponent<Rigidbody>().isKinematic = true;
 
                 gameObject.SetActive(true);
             }

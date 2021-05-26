@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559069155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.306, y: 4.335, z: 39}
+  m_LocalPosition: {x: 9.306, y: 4.335, z: 35.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -21456,6 +21456,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348417671}
   m_CullTransparentMesh: 1
+--- !u!1 &1357605206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7227532535858578812, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+  m_PrefabInstance: {fileID: 7227532535730743344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1357605207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7227532535858578813, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+  m_PrefabInstance: {fileID: 7227532535730743344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1357605208
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357605206}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1 &1508005050
 GameObject:
   m_ObjectHideFlags: 0
@@ -36160,6 +36186,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1917807631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4311263986725186661, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+  m_PrefabInstance: {fileID: 7227532535730743344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969361752
 GameObject:
   m_ObjectHideFlags: 0
@@ -37816,6 +37847,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkateGirl
       objectReference: {fileID: 0}
+    - target: {fileID: 7533452755114334649, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+      propertyPath: m_SocketBall
+      value: 
+      objectReference: {fileID: 1917807631}
+    - target: {fileID: 7533452755114334649, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
+      propertyPath: m_BallInCharacter
+      value: 
+      objectReference: {fileID: 1357605207}
     - target: {fileID: 7533452755114334651, guid: e5c0f1cace855d54ca4fd45ec02ff733, type: 3}
       propertyPath: m_AngularDrag
       value: 1.5

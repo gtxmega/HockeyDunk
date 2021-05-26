@@ -13,7 +13,7 @@ namespace GameCore.Triggers
 
             if(character != null)
             {
-                character.m_StateMachine.ChangeState(character.m_DunkState);
+                character.m_FlyingState.SetDunkGrouping(true);
             }
         }
     }

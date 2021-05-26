@@ -7,6 +7,8 @@ namespace GameCore.StateMachines
         private int flyingTriggerID = Animator.StringToHash("Flying");
         private int rotationSpeedID = Animator.StringToHash("RotationSpeed");
 
+        private bool m_IsDunkGrouping;
+
         private CameraFollow m_CameraFollow;
 
         public FlyingState(IMovementBehavior movement,
@@ -40,10 +42,19 @@ namespace GameCore.StateMachines
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.GROUPING);
                 m_MovementBehevior.AddTorque(Vector3.right * m_Character.m_CharacterData.TrunSpeed);
 
-                timer += Time.deltaTime;
-                var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
+                if(m_IsDunkGrouping)
+                {
+                    timer += Time.deltaTime;
+                    var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
+                    
+                    m_AnimatorBehevior.SetAnimatorParamFloat(Animator.StringToHash("DunkPos"), period * timer);
+                    m_MovementBehevior.SetGrouping(false);
+                }else
+                {
+                    m_MovementBehevior.SetGrouping(true);
+                }
                 
-                m_MovementBehevior.SetGrouping(true);
+               
             }
 
             if(Input.GetMouseButtonUp(0))
@@ -74,6 +85,14 @@ namespace GameCore.StateMachines
             m_CameraFollow.DisableCameraSlow();
             m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0.0f);
             m_MovementBehevior.SetGrouping(false);
+        }
+
+
+        public void SetDunkGrouping(bool state)
+        {
+            m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Dunk"));
+
+            m_IsDunkGrouping = state;
         }
 
 
