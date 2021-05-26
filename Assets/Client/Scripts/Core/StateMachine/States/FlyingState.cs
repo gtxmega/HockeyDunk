@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using Random = System.Random;
+using GameCore.Triggers;
 
 namespace GameCore.StateMachines
 {
@@ -16,12 +17,15 @@ namespace GameCore.StateMachines
 
         private CameraFollow m_CameraFollow;
 
+        private RingTrigger m_RingTrigger;
+
         public FlyingState(IMovementBehavior movement,
                                 IAnimatorBehavior animator, Character character,
                                         StateMachine stateMachine)
                                             :base(movement, animator, character, stateMachine) 
                                             {
                                                 m_CameraFollow = GameObject.FindObjectOfType<CameraFollow>();
+                                                m_RingTrigger = GameObject.FindObjectOfType<RingTrigger>();
                                             }
 
         public override void Enter()
@@ -60,6 +64,7 @@ namespace GameCore.StateMachines
                 {                    
                     m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0);
                     m_MovementBehevior.SetGrouping(false);
+
                 }else
                 {
                     m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, m_RandomIndexPos);
@@ -68,6 +73,13 @@ namespace GameCore.StateMachines
                 }
                 
             }
+
+            if(Vector3.Distance(m_Character.m_Transform.position, m_RingTrigger.transform.position) < 7.0f)
+            {
+                m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Ungrouping"));
+            }
+
+
 
             if(Input.GetMouseButtonUp(0))
             {
@@ -112,7 +124,6 @@ namespace GameCore.StateMachines
         public void SetDunkGrouping(bool state)
         {
             m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Dunk"));
-
             m_IsDunkGrouping = state;
         }
 

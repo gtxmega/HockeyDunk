@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: ba9c23f64cfd54b49a0305d7cb041d52
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21100
   internalIDToNameTable:
   - first:
       74: 6041356755689258937
@@ -115,7 +115,7 @@ ModelImporter:
       takeName: Dummy|Fly_01
       internalID: 0
       firstFrame: 0
-      lastFrame: 120
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

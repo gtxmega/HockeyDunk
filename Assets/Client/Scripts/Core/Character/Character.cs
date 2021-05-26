@@ -12,6 +12,7 @@ namespace GameCore
         #region Events
 
         [HideInInspector] public UnityEvent EventDeath = new UnityEvent();
+        [HideInInspector] public UnityEvent EventDunk = new UnityEvent();
 
         #endregion
 
