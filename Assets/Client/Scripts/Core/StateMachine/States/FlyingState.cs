@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using Random = System.Random;
+
 namespace GameCore.StateMachines
 {
     public class FlyingState : DeathState
@@ -8,6 +10,9 @@ namespace GameCore.StateMachines
         private int rotationSpeedID = Animator.StringToHash("RotationSpeed");
 
         private bool m_IsDunkGrouping;
+
+        private int m_RandomIndexPos;
+        private Random m_Randomizer = new Random();
 
         private CameraFollow m_CameraFollow;
 
@@ -28,7 +33,10 @@ namespace GameCore.StateMachines
             m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
             
             m_AnimatorBehevior.ResetAllTriggers();
+            
             m_AnimatorBehevior.SetAnimationTrigger(flyingTriggerID);
+
+            m_RandomIndexPos = m_Randomizer.Next(0, 4);
         }
 
         float timer;
@@ -42,30 +50,41 @@ namespace GameCore.StateMachines
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.GROUPING);
                 m_MovementBehevior.AddTorque(Vector3.right * m_Character.m_CharacterData.TrunSpeed);
 
+                timer += Time.deltaTime;
+                var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
+
+                m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Grouping"));
+
+
                 if(m_IsDunkGrouping)
-                {
-                    timer += Time.deltaTime;
-                    var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
-                    
-                    m_AnimatorBehevior.SetAnimatorParamFloat(Animator.StringToHash("DunkPos"), period * timer);
+                {                    
+                    m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0);
                     m_MovementBehevior.SetGrouping(false);
                 }else
                 {
+                    m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, m_RandomIndexPos);
+
                     m_MovementBehevior.SetGrouping(true);
                 }
                 
-               
             }
 
             if(Input.GetMouseButtonUp(0))
             {
                 timer = 0.0f;
 
+                var randomNumber = m_Randomizer.Next(0, 4);
+                while(m_RandomIndexPos == randomNumber)
+                    randomNumber = m_Randomizer.Next(0, 4);
+
+                m_RandomIndexPos = randomNumber;
+
                 m_Character.m_CenterOfMassChanger.ChangeCenterOfMass(E_COM_TYPE.FLYING);
                 m_MovementBehevior.SetGrouping(false);
-            }
 
-            m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, m_MovementBehevior.GetSqrMagnitudeAngularVelocity());
+                m_AnimatorBehevior.ResetAllTriggers();
+                m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Ungrouping"));
+            }
         }
 
         public override void PhysicsUpdate()
@@ -85,6 +104,8 @@ namespace GameCore.StateMachines
             m_CameraFollow.DisableCameraSlow();
             m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0.0f);
             m_MovementBehevior.SetGrouping(false);
+
+            m_IsDunkGrouping = false;
         }
 
 

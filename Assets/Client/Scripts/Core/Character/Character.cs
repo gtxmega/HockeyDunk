@@ -177,6 +177,8 @@ namespace GameCore
                     m_Animator.ResetTrigger("Idle");
                     m_Animator.ResetTrigger("Jump");
                     m_Animator.ResetTrigger("Flying");
+                    m_Animator.ResetTrigger("Grouping");
+                    m_Animator.ResetTrigger("Ungrouping");
                 }
 
             #endregion
