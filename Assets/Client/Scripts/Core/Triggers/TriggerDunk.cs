@@ -8,6 +8,7 @@ namespace GameCore.Triggers
 
         private void OnTriggerEnter(Collider otherCollider) 
         {
+
             var character = otherCollider.GetComponentInParent<Character>();
 
             if(character != null)

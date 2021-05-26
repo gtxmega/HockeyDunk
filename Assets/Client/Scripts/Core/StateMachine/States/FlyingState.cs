@@ -42,11 +42,7 @@ namespace GameCore.StateMachines
 
                 timer += Time.deltaTime;
                 var period = 2 * Mathf.PI / m_Character.GetAngularVelocity();
-
-                //Debug.Log(m_Character.GetAngularVelocity());
                 
-                
-
                 m_MovementBehevior.SetGrouping(true);
             }
 
@@ -77,6 +73,7 @@ namespace GameCore.StateMachines
 
             m_CameraFollow.DisableCameraSlow();
             m_AnimatorBehevior.SetAnimatorParamFloat(rotationSpeedID, 0.0f);
+            m_MovementBehevior.SetGrouping(false);
         }
 
 
