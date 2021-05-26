@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2530514, g: 0.4720614, b: 0.60571134, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.2530394, g: 0.47205508, b: 0.6057092, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1603,13 +1603,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.24888453, y: -0.4619148, z: 0.13682538, w: 0.8402202}
-  m_LocalPosition: {x: 13.57, y: 10.306999, z: -5.56}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 9.55, y: 10.306999, z: -5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 33, y: -57.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0d8fc1ef781344c851dadbee49ea47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraOffset: {x: 3.99, y: 3.29, z: -1.73}
+  m_CameraOffset: {x: 0, y: 3.13, z: -3.61}
   m_CameraSmoothSpeed: 150
   m_CameraSlowSmoothSpeed: 13
   m_TargetFollow: {fileID: 483209345}
