@@ -33,7 +33,7 @@ namespace GameCore.Triggers
             if(character == null)
                 return;
 
-            if(other.CompareTag("Ball") && character.m_isGrouping == false)
+            if(other.CompareTag("Ball"))
             {
 
                 m_BallObject = Instantiate(m_PrefabSpawnBall, m_PointSpawnBall.position, Quaternion.identity);
@@ -48,6 +48,9 @@ namespace GameCore.Triggers
                 character.m_StateMachine.ChangeState(character.m_IdleState);
                 m_GameMode.EventLevelWon.Invoke();
                 
+            }else
+            {
+                character.KillCharacter();
             }
 
         }

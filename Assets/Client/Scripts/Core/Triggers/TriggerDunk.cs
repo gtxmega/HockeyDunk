@@ -14,6 +14,7 @@ namespace GameCore.Triggers
             if(character != null)
             {
                 character.m_FlyingState.SetDunkGrouping(true);
+                character.EventDunk.Invoke();
             }
         }
     }
