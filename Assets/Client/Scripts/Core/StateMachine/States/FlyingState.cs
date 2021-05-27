@@ -74,7 +74,7 @@ namespace GameCore.StateMachines
                 
             }
 
-            if(Vector3.Distance(m_Character.m_Transform.position, m_RingTrigger.transform.position) < 7.0f)
+            if(Vector3.Distance(m_Character.m_Transform.position, m_RingTrigger.transform.position) < 6.3f)
             {
                 m_AnimatorBehevior.SetAnimationTrigger(Animator.StringToHash("Ungrouping"));
             }
